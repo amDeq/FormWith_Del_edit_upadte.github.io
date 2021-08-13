@@ -1,0 +1,128 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size:62.5% ;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: inherit;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.mainSection{
+  height: 100vh;
+  background-color: #34495e;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.formBox{
+  max-width:50rem ;
+  width: 50rem;
+  background-color: #ecf0f1;
+  padding: 3rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+}
+.formFiled{
+  display: flex;
+  margin: 1.3rem 0;
+  align-items: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select{
+  width: 100%;
+  outline: none;
+  padding: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #34495e;
+  background: #fff;
+}
+select{
+  margin-top: 1rem;
+}
+.radioButtonFiled{
+  display: flex;
+  margin: 2rem 0;
+  align-items: center;
+}
+.btn{
+  width: 100%;
+  padding: 1.2rem;
+  background-color: #34495e;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.radioBtnItem{
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+span{
+  color: #fff;
+  background: #2c3e50;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.Myfile{
+    background: #2c3e50;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+}
+span,
+label{
+  font-size: 1.6rem;
+}
+.selectMenu{
+  display: flex;
+  flex-direction: column;
+}
+.olList{
+  background-color: #fff;
+  list-style: none;
+  padding: 2rem;
+
+}
+.olListBox{
+  display: flex;
+  justify-content: space-around;
+}
+.olListBox1{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+th {
+  margin: 0 2rem;
+  text-align: left;
+}
+td{
+  text-align: left;
+}
+.deletbtn{
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+}
+.edittbtn{
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+}
