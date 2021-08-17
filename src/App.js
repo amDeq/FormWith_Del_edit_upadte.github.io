@@ -1,11 +1,14 @@
 import React from "react";
-import FormSection from "./Forms";
-
+import Formsection from "./components/forms";
+import Header from "./header";
 const App = () => {
   return (
-    <section className="mainSection">
-      <FormSection />
-    </section>
+    <>
+      <Header />
+      <section className="mainSection">
+        <Formsection />
+      </section>
+    </>
   );
 };
 export default App;

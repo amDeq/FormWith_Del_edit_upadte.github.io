@@ -1,10 +1,9 @@
 import React from "react";
 
 const List = (props) => {
-  console.log(props);
   return (
     <table className="olList">
-      <tr className=" olListBox">
+      <tr className=" olListBox mobileView">
         <th>Fullname</th>
         <th>Email</th>
         <th>Gender</th>

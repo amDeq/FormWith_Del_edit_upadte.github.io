@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import List from "./components/List";
-import FormFild from "./components/formsFilds";
+import List from "./List";
+import FormFild from "./formsFilds";
 
-const FormSection = () => {
+const Formsection = () => {
   const [getUserInfo, SetUserInfo] = useState({
     fullname: "",
     userEmail: "",
     gender: "",
-    takeFile: "",
     selectEdu: "",
     password: "",
-    Repassword: "",
+    repassword: "",
   });
 
   const [items, setItems] = useState([]);
   const [toggleBtnSubmit, setToggleBtnSubmit] = useState(true);
   const [getEditItem, setGetEditItem] = useState(null);
+  const [error, setError] = useState("");
+
   const inputEvent = (event) => {
-    //console.log(event.target.value);
-    //console.log(event.target.name);
     const { value, name } = event.target;
     SetUserInfo((prevState) => {
       return {
@@ -29,8 +28,12 @@ const FormSection = () => {
   };
   const listOfItem = (e) => {
     e.preventDefault();
-    if (!getUserInfo) {
-      alert("fill your form");
+    if (!getUserInfo.fullname) {
+      setError(`enter your full name`);
+    } else if (!getUserInfo.userEmail) {
+      setError("please enter your Email");
+    } else if (getUserInfo.password !== getUserInfo.repassword) {
+      setError("check your Email");
     } else if (getUserInfo && !toggleBtnSubmit) {
       setItems(
         items.map((elem) => {
@@ -57,7 +60,7 @@ const FormSection = () => {
       takeFile: "",
       selectEdu: "",
       password: "",
-      Repassword: "",
+      repassword: "",
     });
   };
   const deleteItemFun = (index) => {
@@ -76,18 +79,30 @@ const FormSection = () => {
     setGetEditItem(id);
     // alert("edit user info");
   };
+  const cancelButton = () => {
+    SetUserInfo({
+      fullname: "",
+      userEmail: "",
+      gender: "",
+      takeFile: "",
+      selectEdu: "",
+      password: "",
+      repassword: "",
+    });
+  };
   return (
     <>
       <form className="formBox">
         <FormFild
           fullname={getUserInfo.fullname}
           userEmail={getUserInfo.userEmail}
-          takeFile={getUserInfo.takeFile}
           password={getUserInfo.password}
-          Repassword={getUserInfo.Repassword}
+          repassword={getUserInfo.repassword}
           SubmitBtn={listOfItem}
           onChange={inputEvent}
           btnConten={toggleBtnSubmit}
+          cancel={cancelButton}
+          message={error}
         />
       </form>
       <List
@@ -98,4 +113,4 @@ const FormSection = () => {
     </>
   );
 };
-export default FormSection;
+export default Formsection;
