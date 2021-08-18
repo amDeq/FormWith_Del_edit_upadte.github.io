@@ -2,8 +2,10 @@ import React from "react";
 import InputField from "./InputField";
 import RadioButtons from "./RadioButtons";
 import SelectInput from "./SelectInput";
-
-const FormFilds = (props) => {
+import RadioOptions from "./RadioOptions";
+import SelectOptions from "./SelectOptions";
+import Buttons from "./Buttons";
+const FormField = (props) => {
   return (
     <>
       <p className="formFiled">
@@ -26,13 +28,18 @@ const FormFilds = (props) => {
         />
       </p>
       <p className="formFiled">
-        <RadioButtons onChange={props.onChange} />
+        <RadioButtons
+          onChange={props.onChange}
+          options={RadioOptions}
+          radioHeading="Gender"
+        />
       </p>
       <p className="formFiled">
         <SelectInput
           name="selectEdu"
           onChange={props.onChange}
           optionHeading="Level of Education(Select options):"
+          options={SelectOptions}
         />
       </p>
       <p className="formFiled">
@@ -55,25 +62,25 @@ const FormFilds = (props) => {
       </p>
       <p>
         {props.btnConten ? (
-          <input
+          <Buttons
             type="submit"
-            value="Submit"
             className="btn"
             onClick={props.SubmitBtn}
+            text="Submit"
           />
         ) : (
           <>
-            <input
+            <Buttons
               type="button"
-              value="Edit"
               className="btn"
               onClick={props.SubmitBtn}
+              text="Edit"
             />
-            <input
+            <Buttons
               type="button"
-              value="Cancel Button"
               className="btn"
               onClick={props.cancel}
+              text="Cancel Button"
             />
           </>
         )}
@@ -81,4 +88,4 @@ const FormFilds = (props) => {
     </>
   );
 };
-export default FormFilds;
+export default FormField;

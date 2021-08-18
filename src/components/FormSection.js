@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import List from "./List";
-import FormFilds from "./FormField";
+import FormField from "./FormField";
 
 const FormSection = () => {
-  const [getUserInfo, SetUserInfo] = useState({
+  const [getUserInfo, setUserInfo] = useState({
     fullname: "",
     userEmail: "",
     gender: "",
-    selectEdu: "",
+    education: "",
     password: "",
     repassword: "",
   });
@@ -19,7 +19,7 @@ const FormSection = () => {
 
   const inputEvent = (event) => {
     const { value, name } = event.target;
-    SetUserInfo((prevState) => {
+    setUserInfo((prevState) => {
       return {
         ...prevState,
         [name]: value,
@@ -53,12 +53,11 @@ const FormSection = () => {
       });
     }
 
-    SetUserInfo({
+    setUserInfo({
       fullname: "",
       userEmail: "",
       gender: "",
-      takeFile: "",
-      selectEdu: "",
+      education: "",
       password: "",
       repassword: "",
     });
@@ -75,15 +74,15 @@ const FormSection = () => {
     });
     console.log("edit ho ja", editListItem);
     setToggleBtnSubmit(false);
-    SetUserInfo(editListItem.name);
+    setUserInfo(editListItem.name);
     setGetEditItem(id);
   };
   const cancelButton = () => {
-    SetUserInfo({
+    setUserInfo({
       fullname: "",
       userEmail: "",
       gender: "",
-      selectEdu: "",
+      education: "",
       password: "",
       repassword: "",
     });
@@ -91,7 +90,7 @@ const FormSection = () => {
   return (
     <>
       <form className="formBox">
-        <FormFilds
+        <FormField
           fullname={getUserInfo.fullname}
           userEmail={getUserInfo.userEmail}
           password={getUserInfo.password}

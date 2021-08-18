@@ -1,12 +1,12 @@
 import React from "react";
-import RadioOptions from "./RadioOptions";
+
 const RadioButtons = (props) => {
   return (
     <>
       <div className="radioButtonFiled">
-        <span>Gender</span>
+        <span>{props.radioHeading}</span>
         <div className="radioBtnItem">
-          {RadioOptions.map((option) => {
+          {props.options.map((option) => {
             return (
               <>
                 <input
