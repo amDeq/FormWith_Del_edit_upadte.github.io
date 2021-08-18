@@ -1,11 +1,11 @@
 import React from "react";
-const Name = (props) => {
+const InputField = (props) => {
   return (
     <>
       <input
-        type={props.text}
-        placeholder="Enter your Name"
-        name="fullname"
+        type={props.type}
+        placeholder={props.placeholder}
+        name={props.name}
         value={props.value}
         onChange={props.onChange}
         required
@@ -13,4 +13,4 @@ const Name = (props) => {
     </>
   );
 };
-export default Name;
+export default InputField;

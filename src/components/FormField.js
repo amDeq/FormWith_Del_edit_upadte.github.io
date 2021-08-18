@@ -1,49 +1,54 @@
 import React from "react";
-import Name from "./nameField";
-import Email from "./emailField";
-import Radiobutton from "./radioButtons";
-import Selectoptions from "./selectInput";
-import Repassword from "./repassword";
+import InputField from "./InputField";
+import RadioButtons from "./RadioButtons";
+import SelectInput from "./SelectInput";
 
-const FormFild = (props) => {
+const FormFilds = (props) => {
   return (
     <>
       <p className="formFiled">
-        <Name text="text" value={props.fullname} onChange={props.onChange} />
+        <InputField
+          type="text"
+          placeholder="Enter your Name"
+          name="fullname"
+          value={props.fullname}
+          onChange={props.onChange}
+        />
         <p>{props.message}</p>
       </p>
       <p className="formFiled">
-        <Email
-          email="email"
+        <InputField
+          type="email"
+          placeholder="Enter your email"
+          name="userEmail"
           value={props.userEmail}
           onChange={props.onChange}
-          className={props.inputClass}
         />
       </p>
       <p className="formFiled">
-        <Radiobutton
-          radio="radio"
-          female="Female"
-          male="Male"
+        <RadioButtons onChange={props.onChange} />
+      </p>
+      <p className="formFiled">
+        <SelectInput
+          name="selectEdu"
           onChange={props.onChange}
-          name="gender"
+          optionHeading="Level of Education(Select options):"
         />
       </p>
       <p className="formFiled">
-        <Selectoptions name="selectEdu" onChange={props.onChange} />
-      </p>
-      <p className="formFiled">
-        <Repassword
-          password="password"
-          repassword="password"
+        <InputField
+          type="password"
+          placeholder="Enter your Password"
+          name="password"
           value={props.password}
           onChange={props.onChange}
         />
       </p>
       <p className="formFiled">
-        <Repassword
-          password="password"
-          repassword="repassword"
+        <InputField
+          type="password"
+          placeholder="Enter your re-password"
+          name="repassword"
           value={props.repassword}
           onChange={props.onChange}
         />
@@ -76,4 +81,4 @@ const FormFild = (props) => {
     </>
   );
 };
-export default FormFild;
+export default FormFilds;

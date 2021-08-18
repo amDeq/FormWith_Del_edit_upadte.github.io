@@ -1,4 +1,4 @@
-const options = [
+const SelectOptions = [
   {
     value: "Highschool",
     text: "High school",
@@ -24,4 +24,4 @@ const options = [
     text: "Doctorate",
   },
 ];
-export default options;
+export default SelectOptions;

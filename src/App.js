@@ -1,12 +1,12 @@
 import React from "react";
-import Formsection from "./components/forms";
+import FormSection from "./components/FormSection";
 import Header from "./header";
 const App = () => {
   return (
     <>
       <Header />
       <section className="mainSection">
-        <Formsection />
+        <FormSection />
       </section>
     </>
   );

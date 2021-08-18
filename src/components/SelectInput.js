@@ -1,12 +1,12 @@
 import React from "react";
-import options from "./userselectdata";
-const Selectoptions = (props) => {
+import SelectOptions from "./SelectOptions";
+const SelectInput = (props) => {
   return (
     <>
       <label className="selectMenu">
-        Level of Education(Select options):
+        {props.optionHeading}
         <select name={props.name} onChange={props.onChange}>
-          {options.map((elem) => {
+          {SelectOptions.map((elem) => {
             return <option value={elem.value}>{elem.text}</option>;
           })}
         </select>
@@ -14,4 +14,4 @@ const Selectoptions = (props) => {
     </>
   );
 };
-export default Selectoptions;
+export default SelectInput;

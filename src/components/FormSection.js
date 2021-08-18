@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import List from "./List";
-import FormFild from "./formsFilds";
+import FormFilds from "./FormField";
 
-const Formsection = () => {
+const FormSection = () => {
   const [getUserInfo, SetUserInfo] = useState({
     fullname: "",
     userEmail: "",
@@ -77,14 +77,12 @@ const Formsection = () => {
     setToggleBtnSubmit(false);
     SetUserInfo(editListItem.name);
     setGetEditItem(id);
-    // alert("edit user info");
   };
   const cancelButton = () => {
     SetUserInfo({
       fullname: "",
       userEmail: "",
       gender: "",
-      takeFile: "",
       selectEdu: "",
       password: "",
       repassword: "",
@@ -93,7 +91,7 @@ const Formsection = () => {
   return (
     <>
       <form className="formBox">
-        <FormFild
+        <FormFilds
           fullname={getUserInfo.fullname}
           userEmail={getUserInfo.userEmail}
           password={getUserInfo.password}
@@ -113,4 +111,4 @@ const Formsection = () => {
     </>
   );
 };
-export default Formsection;
+export default FormSection;
