@@ -1,5 +1,4 @@
 import React from "react";
-
 const List = (props) => {
   return (
     <table className="olList">
@@ -14,7 +13,7 @@ const List = (props) => {
         <th>Edit</th>
       </tr>
 
-      {props.itemsList.map((item) => {
+      {props.items.map((item) => {
         // return console.log([item])
         return (
           <>
@@ -22,18 +21,17 @@ const List = (props) => {
               <td>{item.name.fullname}</td>
               <td>{item.name.userEmail}</td>
               <td>{item.name.gender}</td>
-              <td>{item.name.takeFile}</td>
               <td>{item.name.selectEdu}</td>
               <td>{item.name.password}</td>
               <button
                 className="deletbtn"
-                onClick={() => props.onChangeList(item.id)}
+                onClick={() => props.deleteItemFun(item.id)}
               >
                 Delete user
               </button>
               <button
                 className="edittbtn"
-                onClick={() => props.onChangeEdit(item.id)}
+                onClick={() => props.editItem(item.id)}
               >
                 Edit user
               </button>
