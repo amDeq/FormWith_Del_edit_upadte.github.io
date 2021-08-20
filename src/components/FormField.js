@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
 import RadioButtons from "./RadioButtons";
 import SelectInput from "./SelectInput";
 import RadioOptions from "./RadioOptions";
 import SelectOptions from "./SelectOptions";
 import Buttons from "./Buttons";
-import List from "./List";
-const FormField = () => {
+const FormField = (props) => {
   const [getUserInfo, setUserInfo] = useState({
     fullname: "",
     userEmail: "",
@@ -15,10 +14,9 @@ const FormField = () => {
     password: "",
     repassword: "",
   });
-
-  const [items, setItems] = useState([]);
-  const [toggleBtnSubmit, setToggleBtnSubmit] = useState(true);
-  const [getEditItem, setGetEditItem] = useState(null);
+  useEffect(() => {
+    setUserInfo(props.editValue);
+  }, [props.editValue]);
   const [error, setError] = useState("");
 
   const inputEvent = (event) => {
@@ -38,25 +36,11 @@ const FormField = () => {
       setError("please enter your Email");
     } else if (getUserInfo.password !== getUserInfo.repassword) {
       setError("check your Email");
-    } else if (getUserInfo && !toggleBtnSubmit) {
-      setItems(
-        items.map((elem) => {
-          if (elem.id === getEditItem) {
-            return { ...elem, name: getUserInfo };
-          }
-          return elem;
-        })
-      );
+    } else if (getUserInfo && !props.toggleBtnSubmit) {
+      props.addItem(getUserInfo);
     } else {
-      setItems((olditem) => {
-        const allInputData = {
-          id: new Date().getTime().toString(),
-          name: getUserInfo,
-        };
-        return [...olditem, allInputData];
-      });
+      props.addItem(getUserInfo);
     }
-
     setUserInfo({
       fullname: "",
       userEmail: "",
@@ -65,21 +49,6 @@ const FormField = () => {
       password: "",
       repassword: "",
     });
-  };
-  const deleteItemFun = (index) => {
-    const deleteItems = items.filter((elem) => {
-      return index !== elem.id;
-    });
-    setItems(deleteItems);
-  };
-  const editItem = (id) => {
-    const editListItem = items.find((elem) => {
-      return elem.id === id;
-    });
-    console.log("edit ho ja", editListItem);
-    setToggleBtnSubmit(false);
-    setUserInfo(editListItem.name);
-    setGetEditItem(id);
   };
   const cancelButton = () => {
     setUserInfo({
@@ -147,7 +116,7 @@ const FormField = () => {
           />
         </p>
         <p>
-          {toggleBtnSubmit ? (
+          {props.toggleBtnSubmit ? (
             <Buttons
               type="submit"
               className="btn"
@@ -172,7 +141,6 @@ const FormField = () => {
           )}
         </p>
       </form>
-      <List items={items} deleteItemFun={deleteItemFun} editItem={editItem} />
     </>
   );
 };

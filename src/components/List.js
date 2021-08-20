@@ -18,11 +18,11 @@ const List = (props) => {
         return (
           <>
             <tr className="olListBox1" key={item.id}>
-              <td>{item.name.fullname}</td>
-              <td>{item.name.userEmail}</td>
-              <td>{item.name.gender}</td>
-              <td>{item.name.selectEdu}</td>
-              <td>{item.name.password}</td>
+              <td>{item.fullname}</td>
+              <td>{item.userEmail}</td>
+              <td>{item.gender}</td>
+              <td>{item.selectEdu}</td>
+              <td>{item.password}</td>
               <button
                 className="deletbtn"
                 onClick={() => props.deleteItemFun(item.id)}

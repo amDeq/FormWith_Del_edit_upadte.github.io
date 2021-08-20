@@ -2,10 +2,16 @@ import React from "react";
 
 import FormField from "./FormField";
 
-const FormSection = () => {
+const FormSection = (props) => {
   return (
     <>
-      <FormField />
+      <FormField
+        addItem={props.addItem}
+        editItem={props.editItem}
+        editValue={props.editValue}
+        editId={props.editId}
+        toggleBtnSubmit={props.toggleBtnSubmit}
+      />
     </>
   );
 };
