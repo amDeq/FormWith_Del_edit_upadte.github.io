@@ -6,7 +6,6 @@ const List = (props) => {
         <th>Fullname</th>
         <th>Email</th>
         <th>Gender</th>
-        <th>User File</th>
         <th>Education level</th>
         <th>User Password</th>
         <th>Delete</th>
@@ -14,7 +13,6 @@ const List = (props) => {
       </tr>
 
       {props.items.map((item) => {
-        // return console.log([item])
         return (
           <>
             <tr className="olListBox1" key={item.id}>

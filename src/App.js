@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormSection from "./components/FormSection";
 import Header from "./header";
 import List from "./components/List";
-const App = (props) => {
+const App = () => {
   const [items, setItems] = useState([]);
   const [editValue, setEditValue] = useState({});
   const [toggleBtnSubmit, setToggleBtnSubmit] = useState(true);
