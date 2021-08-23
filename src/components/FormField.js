@@ -5,6 +5,8 @@ import SelectInput from "./SelectInput";
 import RadioOptions from "./RadioOptions";
 import SelectOptions from "./SelectOptions";
 import Buttons from "./Buttons";
+import Validation from "./Validation";
+
 const FormField = (props) => {
   const [getUserInfo, setUserInfo] = useState({
     fullname: "",
@@ -17,7 +19,7 @@ const FormField = (props) => {
   useEffect(() => {
     setUserInfo(props.editValue);
   }, [props.editValue]);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const inputEvent = (event) => {
     const { value, name } = event.target;
@@ -27,16 +29,27 @@ const FormField = (props) => {
         [name]: value,
       };
     });
+    setErrors(Validation(getUserInfo));
   };
-  const listOfItem = (e) => {
+  const submitForm = (e) => {
     e.preventDefault();
     if (!getUserInfo.fullname) {
-      setError(`enter your full name`);
+      setErrors(Validation(getUserInfo));
     } else if (!getUserInfo.userEmail) {
-      setError("please enter your Email");
-    } else if (getUserInfo.password !== getUserInfo.repassword) {
-      setError("check your Email");
-    } else if (getUserInfo && !props.toggleBtnSubmit) {
+      setErrors(Validation(getUserInfo));
+    } else if (!getUserInfo.password) {
+      setErrors(Validation(getUserInfo));
+    } else if (!getUserInfo.repassword) {
+      setErrors(Validation(getUserInfo));
+    } else if (getUserInfo && !props.toggleBtn) {
+      // props.addItem(
+      //   props.items.map((elem) => {
+      //     if (elem.id === props.editGetId) {
+      //       return { ...elem, name: getUserInfo };
+      //     }
+      //     return elem;
+      //   })
+      // );
       props.addItem(getUserInfo);
     } else {
       props.addItem(getUserInfo);
@@ -71,7 +84,7 @@ const FormField = (props) => {
             value={getUserInfo.fullname}
             onChange={inputEvent}
           />
-          <p>{error}</p>
+          {errors.fullname && <p className="error">{errors.fullname}</p>}
         </p>
         <p className="formFiled">
           <InputField
@@ -81,6 +94,7 @@ const FormField = (props) => {
             value={getUserInfo.userEmail}
             onChange={inputEvent}
           />
+          {errors.userEmail && <p className="error">{errors.userEmail}</p>}
         </p>
         <p className="formFiled">
           <RadioButtons
@@ -105,6 +119,7 @@ const FormField = (props) => {
             value={getUserInfo.password}
             onChange={inputEvent}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </p>
         <p className="formFiled">
           <InputField
@@ -114,20 +129,21 @@ const FormField = (props) => {
             value={getUserInfo.repassword}
             onChange={inputEvent}
           />
+          {errors.repassword && <p className="error">{errors.repassword}</p>}
         </p>
-        <p>
-          {props.toggleBtnSubmit ? (
+        <p className="formFiled">
+          {props.toggleBtn ? (
             <Buttons
               type="submit"
               className="btn"
-              onClick={listOfItem}
+              onClick={submitForm}
               text="Submit"
             />
           ) : (
             <>
               <Buttons
                 type="button"
-                onClick={listOfItem}
+                onClick={submitForm}
                 text="Edit"
                 className="btn"
               />

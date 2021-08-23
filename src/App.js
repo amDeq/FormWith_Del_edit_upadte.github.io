@@ -5,8 +5,8 @@ import List from "./components/List";
 const App = () => {
   const [items, setItems] = useState([]);
   const [editValue, setEditValue] = useState({});
-  const [toggleBtnSubmit, setToggleBtnSubmit] = useState(true);
-
+  const [toggleBtn, setToggleBtn] = useState(true);
+  // const [editGetId, setEditGetId] = useState(null);
   const deleteItemFun = (index) => {
     const deleteItems = items.filter((elem) => {
       return index !== elem.id;
@@ -20,10 +20,11 @@ const App = () => {
     console.log("it is editing", editListItem);
 
     setEditValue(editListItem);
-    setToggleBtnSubmit(false);
+    setToggleBtn(false);
+    // setEditGetId(id);
   };
   const addItem = (item) => {
-    setItems([...items, { ...item, id: new Date().toTimeString().toString() }]);
+    setItems([...items, { ...item, id: new Date().getTime().toString() }]);
     console.log(item);
   };
   console.log(items);
@@ -35,7 +36,9 @@ const App = () => {
           addItem={addItem}
           editItem={editItem}
           editValue={editValue}
-          toggleBtnSubmit={toggleBtnSubmit}
+          toggleBtn={toggleBtn}
+          items={items}
+          // editGetId={editGetId}
         />
         <List items={items} deleteItemFun={deleteItemFun} editItem={editItem} />
       </section>

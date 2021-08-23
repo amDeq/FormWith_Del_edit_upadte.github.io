@@ -6,11 +6,11 @@ const FormSection = (props) => {
   return (
     <>
       <FormField
-        addItem={props.addItem}
-        editItem={props.editItem}
-        editValue={props.editValue}
-        editId={props.editId}
-        toggleBtnSubmit={props.toggleBtnSubmit}
+        // addItem={props.addItem}
+        // editItem={props.editItem}
+        // editValue={props.editValue}
+        // toggleBtnSubmit={props.toggleBtnSubmit}
+        {...props}
       />
     </>
   );
