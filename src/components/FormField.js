@@ -50,6 +50,7 @@ const FormField = (props) => {
       //     return elem;
       //   })
       // );
+      // props.addItem({ name: getUserInfo });
       props.addItem(getUserInfo);
     } else {
       props.addItem(getUserInfo);
