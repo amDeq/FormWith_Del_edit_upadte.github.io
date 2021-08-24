@@ -38,7 +38,6 @@ const App = (props) => {
         return items;
       });
       setItems(data);
-      // console.log("data", data);
     } else {
       setItems([
         ...items,
