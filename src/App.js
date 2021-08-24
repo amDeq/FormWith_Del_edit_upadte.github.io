@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormSection from "./components/FormSection";
 import Header from "./header";
 import List from "./components/List";
-const App = () => {
+const App = (props) => {
   const [items, setItems] = useState([]);
   const [editValue, setEditValue] = useState({});
   const [toggleBtn, setToggleBtn] = useState(true);
@@ -22,42 +22,29 @@ const App = () => {
     setEditValue(editListItem);
     setToggleBtn(false);
     setEditGetId(id);
+    console.log(editListItem);
   };
   const addItem = (item) => {
-    console.log("updated items", item);
-    // return;
-    //const resultData = items.filter((data) => data.id === editGetId);
-    // setItems([
-    //   ...items,
-    //   { ...item, id: item.id ? item.id : new Date().getTime().toString() },
-    // ]);
-
-    // setItems((prevState) => {
-    //   return [
-    //     ...prevState,
-    //     { ...item, id: item.id ? item.id : new Date().getTime().toString() },
-    //   ];
-    // });
-
-    if (!editGetId) {
-      setItems([...items, { ...item, id: new Date().getTime().toString() }]);
-      //setItems(items);
+    if (editGetId) {
+      const data = items.filter((info) => {
+        if (info.id === editGetId) {
+          info.fullname = item.fullname;
+          info.userEmail = item.userEmail;
+          info.gender = item.gender;
+          info.education = item.education;
+          info.password = item.password;
+          info.repassword = item.repassword;
+        }
+        return items;
+      });
+      setItems(data);
+      // console.log("data", data);
     } else {
       setItems([
-        {
-          id: editGetId,
-          fullname: item.fullname,
-          userEmail: item.userEmail,
-          gender: item.gender,
-          education: item.education,
-          password: item.password,
-          repassword: item.repassword,
-        },
+        ...items,
+        { ...item, id: item.id ? item.id : new Date().getTime().toString() },
       ]);
-      console.log(item);
     }
-
-    // console.log(item);
   };
   console.log(items);
   return (
@@ -70,7 +57,7 @@ const App = () => {
           editValue={editValue}
           toggleBtn={toggleBtn}
           items={items}
-          // editGetId={editGetId}
+          editGetId={editGetId}
         />
         <List items={items} deleteItemFun={deleteItemFun} editItem={editItem} />
       </section>

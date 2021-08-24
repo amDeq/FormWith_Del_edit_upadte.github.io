@@ -19,7 +19,7 @@ const List = (props) => {
               <td>{item.fullname}</td>
               <td>{item.userEmail}</td>
               <td>{item.gender}</td>
-              <td>{item.selectEdu}</td>
+              <td>{item.education}</td>
               <td>{item.password}</td>
               <button
                 className="deletbtn"

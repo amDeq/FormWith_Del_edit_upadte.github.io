@@ -42,15 +42,6 @@ const FormField = (props) => {
     } else if (!getUserInfo.repassword) {
       setErrors(Validation(getUserInfo));
     } else if (getUserInfo && !props.toggleBtn) {
-      // props.addItem(
-      //   props.items.map((elem) => {
-      //     if (elem.id === props.editGetId) {
-      //       return { ...elem, name: getUserInfo };
-      //     }
-      //     return elem;
-      //   })
-      // );
-      // props.addItem({ name: getUserInfo });
       props.addItem(getUserInfo);
     } else {
       props.addItem(getUserInfo);
@@ -106,7 +97,7 @@ const FormField = (props) => {
         </p>
         <p className="formFiled">
           <SelectInput
-            name="selectEdu"
+            name="education"
             onChange={inputEvent}
             optionHeading="Level of Education(Select options):"
             options={SelectOptions}
@@ -135,7 +126,7 @@ const FormField = (props) => {
         <p className="formFiled">
           {props.toggleBtn ? (
             <Buttons
-              type="submit"
+              type="button"
               className="btn"
               onClick={submitForm}
               text="Submit"
