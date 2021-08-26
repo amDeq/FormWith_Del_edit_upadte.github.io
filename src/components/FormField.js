@@ -17,8 +17,8 @@ const FormField = (props) => {
     repassword: "",
   });
   useEffect(() => {
-    setUserInfo(props.editValue);
-  }, [props.editValue]);
+    setUserInfo(props.editUser);
+  }, [props.editUser]);
   const [errors, setErrors] = useState({});
 
   const inputEvent = (event) => {
@@ -42,9 +42,9 @@ const FormField = (props) => {
     } else if (!getUserInfo.repassword) {
       setErrors(Validation(getUserInfo));
     } else if (getUserInfo && !props.toggleBtn) {
-      props.addItem(getUserInfo);
+      props.addUser(getUserInfo);
     } else {
-      props.addItem(getUserInfo);
+      props.addUser(getUserInfo);
     }
     setUserInfo({
       fullname: "",

@@ -9,27 +9,27 @@ const List = (props) => {
         <th>Education level</th>
         <th>User Password</th>
         <th>Delete</th>
-        <th>Edit</th>
+        <th>Edit</th>q
       </tr>
 
-      {props.items.map((item) => {
+      {props.users.map((user) => {
         return (
           <>
-            <tr className="olListBox1" key={item.id}>
-              <td>{item.fullname}</td>
-              <td>{item.userEmail}</td>
-              <td>{item.gender}</td>
-              <td>{item.education}</td>
-              <td>{item.password}</td>
+            <tr className="olListBox1" key={user.id}>
+              <td>{user.fullname}</td>
+              <td>{user.userEmail}</td>
+              <td>{user.gender}</td>
+              <td>{user.education}</td>
+              <td>{user.password}</td>
               <button
                 className="deletbtn"
-                onClick={() => props.deleteItemFun(item.id)}
+                onClick={() => props.deleteUser(user.id)}
               >
                 Delete user
               </button>
               <button
                 className="edittbtn"
-                onClick={() => props.editItem(item.id)}
+                onClick={() => props.editIUser(user.id)}
               >
                 Edit user
               </button>
