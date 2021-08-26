@@ -61,17 +61,14 @@ const App = () => {
     // }
   };
   console.log(users);
-  const saveEditedUser = (user) => {
-    console.log("user", user);
+  const saveEditedUser = (editUser) => {
+    console.log("user =============", editUser);
 
-    const newUser = users.map((user) => {
-      if (user.id === editUser) {
-        return { ...user, name: editUser };
-      }
-      return user;
-    });
+    const newUser = users.map((user) =>
+      user.id === editUser.id ? editUser : user
+    );
 
-    setEditUser(newUser);
+    setUsers(newUser);
   };
 
   return (
@@ -82,6 +79,7 @@ const App = () => {
           addUser={addUser}
           userToBeEdited={editUser}
           saveEditedUser={saveEditedUser}
+          editUser={editUser}
         />
         <List
           users={users}
