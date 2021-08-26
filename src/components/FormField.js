@@ -16,9 +16,12 @@ const FormField = (props) => {
     password: "",
     repassword: "",
   });
+
   useEffect(() => {
-    setUserInfo(props.editUser);
-  }, [props.editUser]);
+    if (props.userToBeEdited) {
+      setUserInfo(props.userToBeEdited);
+    }
+  }, [props.userToBeEdited]);
   const [errors, setErrors] = useState({});
 
   const inputEvent = (event) => {
@@ -41,10 +44,10 @@ const FormField = (props) => {
       setErrors(Validation(getUserInfo));
     } else if (!getUserInfo.repassword) {
       setErrors(Validation(getUserInfo));
-    } else if (getUserInfo && !props.toggleBtn) {
+    } else if (!props.userToBeEdited) {
       props.addUser(getUserInfo);
     } else {
-      props.addUser(getUserInfo);
+      props.saveEditedUser(getUserInfo);
     }
     setUserInfo({
       fullname: "",
@@ -124,7 +127,7 @@ const FormField = (props) => {
           {errors.repassword && <p className="error">{errors.repassword}</p>}
         </p>
         <p className="formFiled">
-          {props.toggleBtn ? (
+          {!props.userToBeEdited ? (
             <Buttons
               type="button"
               className="btn"

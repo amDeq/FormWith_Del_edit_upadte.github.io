@@ -29,7 +29,7 @@ const List = (props) => {
               </button>
               <button
                 className="edittbtn"
-                onClick={() => props.editIUser(user.id)}
+                onClick={() => props.editUserButton(user.id)}
               >
                 Edit user
               </button>
