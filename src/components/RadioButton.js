@@ -1,6 +1,6 @@
 import React from "react";
 
-const RadioButtons = (props) => {
+const RadioButton = (props) => {
   return (
     <>
       <div className="radioButtonFiled">
@@ -25,4 +25,4 @@ const RadioButtons = (props) => {
     </>
   );
 };
-export default RadioButtons;
+export default RadioButton;

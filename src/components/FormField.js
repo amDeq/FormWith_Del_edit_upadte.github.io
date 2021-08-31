@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
-import RadioButtons from "./RadioButtons";
+import RadioButton from "./RadioButton";
 import SelectInput from "./SelectInput";
 import RadioOptions from "./RadioOptions";
 import SelectOptions from "./SelectOptions";
-import Buttons from "./Buttons";
-import Validation from "./Validation";
+import Button from "./Button";
+import validation from "./Validation";
+
+const clearAfterSubmitAndEdit = {
+  fullname: "",
+  userEmail: "",
+  gender: "",
+  education: "",
+  password: "",
+  repassword: "",
+};
 
 const FormField = (props) => {
   const [getUserInfo, setUserInfo] = useState({
@@ -16,14 +25,13 @@ const FormField = (props) => {
     password: "",
     repassword: "",
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (props.userToBeEdited) {
       setUserInfo(props.userToBeEdited);
     }
   }, [props.userToBeEdited]);
-  const [errors, setErrors] = useState({});
-
   const inputEvent = (event) => {
     const { value, name } = event.target;
     setUserInfo((prevState) => {
@@ -32,41 +40,26 @@ const FormField = (props) => {
         [name]: value,
       };
     });
-    setErrors(Validation(getUserInfo));
+    setErrors(validation(getUserInfo));
   };
   const submitForm = (e) => {
     e.preventDefault();
-    if (!getUserInfo.fullname) {
-      setErrors(Validation(getUserInfo));
-    } else if (!getUserInfo.userEmail) {
-      setErrors(Validation(getUserInfo));
-    } else if (!getUserInfo.password) {
-      setErrors(Validation(getUserInfo));
-    } else if (!getUserInfo.repassword) {
-      setErrors(Validation(getUserInfo));
+    if (
+      !getUserInfo.fullname ||
+      !getUserInfo.userEmail ||
+      !getUserInfo.password ||
+      !getUserInfo.repassword
+    ) {
+      setErrors(validation(getUserInfo));
     } else if (!props.userToBeEdited) {
       props.addUser(getUserInfo);
     } else {
       props.saveEditedUser(getUserInfo);
     }
-    setUserInfo({
-      fullname: "",
-      userEmail: "",
-      gender: "",
-      education: "",
-      password: "",
-      repassword: "",
-    });
+    setUserInfo(clearAfterSubmitAndEdit);
   };
   const cancelButton = () => {
-    setUserInfo({
-      fullname: "",
-      userEmail: "",
-      gender: "",
-      education: "",
-      password: "",
-      repassword: "",
-    });
+    setUserInfo(clearAfterSubmitAndEdit);
   };
   return (
     <>
@@ -92,7 +85,7 @@ const FormField = (props) => {
           {errors.userEmail && <p className="error">{errors.userEmail}</p>}
         </p>
         <p className="formFiled">
-          <RadioButtons
+          <RadioButton
             onChange={inputEvent}
             options={RadioOptions}
             radioHeading="Gender"
@@ -128,7 +121,7 @@ const FormField = (props) => {
         </p>
         <p className="formFiled">
           {!props.userToBeEdited ? (
-            <Buttons
+            <Button
               type="button"
               className="btn"
               onClick={submitForm}
@@ -136,13 +129,13 @@ const FormField = (props) => {
             />
           ) : (
             <>
-              <Buttons
+              <Button
                 type="button"
                 onClick={submitForm}
                 text="Edit"
                 className="btn"
               />
-              <Buttons
+              <Button
                 type="button"
                 onClick={cancelButton}
                 text="Cancel Button"

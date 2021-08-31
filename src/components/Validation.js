@@ -1,4 +1,4 @@
-const Validation = (values) => {
+const validation = (values) => {
   let errors = {};
   if (!values.fullname) {
     errors.fullname = "Name is required";
@@ -16,4 +16,4 @@ const Validation = (values) => {
   }
   return errors;
 };
-export default Validation;
+export default validation;
