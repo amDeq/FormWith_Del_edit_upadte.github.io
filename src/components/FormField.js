@@ -42,6 +42,7 @@ const FormField = (props) => {
     });
     setErrors(validation(getUserInfo));
   };
+
   const submitForm = (e) => {
     e.preventDefault();
     if (
