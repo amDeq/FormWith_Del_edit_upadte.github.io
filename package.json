@@ -40,5 +40,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.2"
+  },
+  "description": "live link: https://amdeq.github.io/ReactTraiForm/ # Getting Started with Create React App",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amDeq/FormWith_Del_edit_upadte.github.io.git"
   }
 }

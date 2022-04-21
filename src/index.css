@@ -20,19 +20,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.header{
+  background-color: #222f3e;
+  padding: 3rem 0;
+  border-bottom: 2px solid #fff;
+}
+.header__text{
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
 .mainSection{
-  height: 100vh;
+  min-height: 100vh;
   background-color: #34495e;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+
+  justify-content: space-between;
+
+  flex-direction: row;
+  padding: 5rem;
 }
 .formBox{
   max-width:50rem ;
   width: 50rem;
   background-color: #ecf0f1;
   padding: 3rem;
+  height: 100%;
   border-radius: 5px;
+  margin-right: 2rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
 }
@@ -40,11 +56,12 @@ code {
   display: flex;
   margin: 1.3rem 0;
   align-items: center;
+  flex-direction: column;
 }
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select{
+.formFiled input[type="text"],
+.formFiled input[type="email"],
+.formFiled input[type="password"],
+.formFiled select{
   width: 100%;
   outline: none;
   padding: 1.2rem;
@@ -98,11 +115,13 @@ label{
   background-color: #fff;
   list-style: none;
   padding: 2rem;
-
+  margin-bottom: 4rem;
+  height: 100%;
 }
 .olListBox{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .olListBox1{
   display: flex;
@@ -125,4 +144,28 @@ td{
   background-color: #1abc9c;
   color: #fff;
   border: none;
+}
+.error{
+  color: #e74c3c;
+}
+@media only screen and (max-width: 600px) {
+  .mobileView{
+    display: none;
+  }
+  .olListBox1 {
+    flex-direction: column;
+  }
+  td {
+    text-align: left;
+    margin: 1rem 0;
+  }
+  .formBox{
+    max-width: 30rem;
+  }
+  .olList{
+    background: none;
+  }
+  .olListBox1{
+    background-color: #fff;
+  }
 }

@@ -1,40 +1,36 @@
 import React from "react";
 
 const List = (props) => {
-  console.log(props);
   return (
     <table className="olList">
-      <tr className=" olListBox">
+      <tr className=" olListBox mobileView">
         <th>Fullname</th>
         <th>Email</th>
         <th>Gender</th>
-        <th>User File</th>
         <th>Education level</th>
         <th>User Password</th>
         <th>Delete</th>
-        <th>Edit</th>
+        <th>Edit</th>q
       </tr>
 
-      {props.itemsList.map((item) => {
-        // return console.log([item])
+      {props.users.map((user) => {
         return (
           <>
-            <tr className="olListBox1" key={item.id}>
-              <td>{item.name.fullname}</td>
-              <td>{item.name.userEmail}</td>
-              <td>{item.name.gender}</td>
-              <td>{item.name.takeFile}</td>
-              <td>{item.name.selectEdu}</td>
-              <td>{item.name.password}</td>
+            <tr className="olListBox1" key={user.id}>
+              <td>{user.fullname}</td>
+              <td>{user.userEmail}</td>
+              <td>{user.gender}</td>
+              <td>{user.education}</td>
+              <td>{user.password}</td>
               <button
                 className="deletbtn"
-                onClick={() => props.onChangeList(item.id)}
+                onClick={() => props.deleteUser(user.id)}
               >
                 Delete user
               </button>
               <button
                 className="edittbtn"
-                onClick={() => props.onChangeEdit(item.id)}
+                onClick={() => props.editUserButton(user.id)}
               >
                 Edit user
               </button>
